@@ -1,0 +1,41 @@
+Admin
+uri19chemo@gmail.com
+contraseña: 1234
+Vendedor
+u10_ronal-azul_10@hotmail.com
+Cliente
+crisant_89@hotmail.com
+1234
+
+Siempre Llamar ala funcion del modelo en el controlador en la funcion Index que se utilizara
+
+
+
+0.- Archivo htaccess
+____>> Modificar linea 5 Para nombre de carpeta raiz del proyecto = Linea 19 del 2do paso
+"este archivo sirve para borrar el index.php de la url"
+1.-Carpeta Application--->_config--->_autoload.php
+____>> Modificar linea 55 para utilizar clases de las librerias del framework
+____>> Modificar Linea 67 ara utilizar archivos de ayuda del framework
+2.-Carpeta Application--->_config--->_config.php
+____>> Modificar linea 19 url base para direccion de inicio
+____>> Modificar linea 31 pagina index si dejar en blanco si se utiliza el mod_rewrite
+____>> Modificar linea 131 para caracteres permitidos
+____>> Modificar linea 230 para una clave de cifrado de sesiones
+____>> Modificar linea 254 para poner false o true a la base 
+____>> Modificar linea 255 para la conexion de la tabla sessions para funcion del carrito
+3.-Carpeta Application--->_config--->_database.php
+____>> Modificar para configuracion de base de datos
+4.-Carpeta Application--->_config
+____>> Crear archivo pagination.php
+5.-Carpeta Application--->_config--->_routes.php
+___>> Modificar linea 41 para el controlador de las peticiones de rutas
+6.-Carpeta Application--->_controllers
+___>> Crear Controladores para cada modulo o catalogo del SYS
+7.-Carpeta Application--->_models
+___>> Crear Modelos para cada modulo o catalogo del SYS
+8.-Carpeta Application--->_views
+___>> Crear Vistas para cada modulo o catalogo del SYS
+9.- Para los PDF se crea un Controlador pdf, un modelo model_pdf_excel y una vista por cada catalogo pdf_usuarios etc...
+10.- Para los EXCEL se crea un helper llamado mysql_to_excel_helper en la carpeta helpers dentro de application tambien 
+crear controlador llamado excel y el modelo modelo_pdf_excel

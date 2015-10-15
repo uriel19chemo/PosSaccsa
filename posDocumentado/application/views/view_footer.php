@@ -1,0 +1,1 @@
+<!--Footer de la vista administrativa--></div>      </div><!--/ Div Row-->    </div><!--/ Div Container-->    <!-- Bootstrap core JavaScript    ================================================== -->    </body>  <footer>  <span>Todos los Derechos Reservados @2015 Uriel López Vargas</span>  </footer> </html>
