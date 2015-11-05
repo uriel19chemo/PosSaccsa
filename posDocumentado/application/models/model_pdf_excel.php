@@ -1,7 +1,7 @@
-<?php
-
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
+//Clase model_pdf_excel para llenado de reportes 
 class Model_pdf_excel extends CI_Model {
-
+//constructor de la clase model_pdf_excel
     public function __construct() {
         parent::__construct();
     }

@@ -52,62 +52,106 @@
       <div class="row"><!--Div Row-->
         <div class="col-sm-3 col-md-2 sidebar" style=background:#000000;>
 
-        <div id="treeMenu">
-        <br/>
-        <h2>Menú Principal</h2>
-        <hr/><!--Inter lineado para menu-->
-            <ul><!--Lista de Menu-->
-                <li>
-                Catalogos<span></span>
-                <div>
-                    <ul>
-                        <li><span></span><a href="<?php echo base_url()?>productos"> <i class="icon-barcode"></i>Productos</a></li>
-                        <li><span></span><a href="<?php echo base_url()?>clientes"> <i class="icon-group"></i>Clientes</a></li>
-                        <li><span></span><a href="<?php echo base_url()?>proveedores"> <i class="icon-suitcase"></i>Proveedores</a></li>
-                        <li><span></span><a href="<?php echo base_url()?>categorias"> <i class="icon-tags"></i>Categorias</a></li>
-                        <li><span></span><a href="<?php echo base_url()?>usuarios"> <i class="icon-user"></i>Usuarios</a></li>
-                    </ul>
-                </div>
-                </li>
+        <?php
+    if($this->session->userdata('TIPOUSUARIOMS')=='Administrador'){//Checamos el tipo de usuario para generar su panel de control
+        echo '<div id="treeMenu">';
+        echo '<br/>';
+        echo '<h2>Menú Principal</h2>';
+        echo '<hr/><!--Inter lineado para menu-->';
+            echo '<ul><!--Lista de Menu-->';
+                echo '<li>';
+                echo 'Catalogos<span></span>';
+                echo '<div>';
+                    echo '<ul>';
+                        echo '<li><a href="'.base_url().'productos"> <i class="icon-barcode"></i>&nbsp;Productos</a></li>';
+                        echo '<li><a href="'.base_url().'clientes"> <i class="icon-group"></i>&nbsp;Clientes</a></li>';
+                        echo '<li><a href="'.base_url().'proveedores"> <i class="icon-suitcase"></i>&nbsp;Proveedores</a></li>';
+                        echo '<li><a href="'.base_url().'categorias"> <i class="icon-tags"></i>&nbsp;Categorias</a></li>';
+                        echo '<li><a href="'.base_url().'usuarios"> <i class="icon-user"></i>&nbsp;Usuarios</a></li>';
+                    echo '</ul>';
+                echo '</div>';
+                echo '</li>';
             
-                <li>
-                Ventas<span></span>
-                <div>
-                    <ul>
-                        <li><span></span><a href="<?php echo base_url()?>ventas"> <i class="icon-shopping-cart"></i>Nueva Venta</a></li>
-                    </ul>
-                </div>
-                </li>
+                echo '<li>';
+                echo 'Ventas<span></span>';
+                echo '<div>';
+                    echo '<ul>';
+                        echo '<li><a href="'.base_url().'ventas"> <i class="icon-shopping-cart"></i>&nbsp;Nueva Venta</a></li>';
+                    echo '</ul>';
+                echo '</div>';
+                echo '</li>'; 
             
-                <li>
-                Compras<span></span>
-                <div>
-                    <ul>
-                        <li><span></span><a href="<?php echo base_url()?>ordencompra"> <i class="fa fa-cart-plus"></i>Orden de Compras</a></li>
-                    </ul>
-                </div>
-                </li>
+                echo '<li>';
+                echo 'Compras<span></span>';
+                echo '<div>';
+                    echo '<ul>';
+                        echo '<li><a href="'.base_url().'ordencompra"> <i class="fa fa-cart-plus"></i>&nbsp;Orden de Compras</a></li>';
+                    echo '</ul>';
+                echo '</div>';
+                echo '</li>';
             
-                <li>
-                Reportes<span></span>
-                <div>
-                    <ul>
-                        <li><span></span><a href="<?php echo base_url()?>reportes"> <i class="fa fa-file-text-o"></i>Reporte de Movimientos</a></li>
-                    </ul>
-                </div>
-                </li>
+                echo '<li>';
+                echo 'Reportes<span></span>';
+                echo '<div>';
+                    echo '<ul>';
+                        echo '<li><a href="'.base_url().'reportes"> <i class="fa fa-file-text-o"></i>&nbsp;Reporte de Movimientos</a></li>';
+                    echo '</ul>';
+                echo '</div>';
+                echo '</li>';
             
-                <li>
-                Respaldo<span></span>
-                <div>
-                    <ul>
-                        <li><span></span><a href="<?php echo base_url()?>login"> <i class="fa fa-database"></i>Generar Backup</a></li>
-                    </ul>
-                </div>
-                </li>
-            </ul><!--/Fin Lista de Menu-->
-            <br/>
-        </div>
+                echo '<li>';
+                echo 'Respaldo<span></span>';
+                echo '<div>';
+                    echo '<ul>';
+                        echo '<li><a href="'.base_url().'backup/backupBD"> <i class="fa fa-database"></i>&nbsp;Generar Backup</a></li>';
+                    echo '</ul>';
+                echo '</div>';
+                echo '</li>';
+            echo '</ul><!--/Fin Lista de Menu-->';
+            echo '<br/>';
+        echo '</div>';
+        }else {
+//MENU DE VENDEDOR 
+            echo '<div id="treeMenu">';
+            echo '<br/>';
+            echo '<h2>Menú Principal</h2>';
+            echo '<hr/><!--Inter lineado para menu-->';
+                echo '<ul><!--Lista de Menu-->';
+                    echo '<li>';
+                    echo 'Catalogos<span></span>';
+                    echo '<div>';
+                        echo '<ul>';
+                            echo '<li><a href="'.base_url().'productos"> <i class="icon-barcode"></i>&nbsp;Productos</a></li>';
+                            echo '<li><a href="'.base_url().'clientes"> <i class="icon-group"></i>&nbsp;Clientes</a></li>';
+                            echo '<li><a href="'.base_url().'proveedores"> <i class="icon-suitcase"></i>&nbsp;Proveedores</a></li>';
+                            echo '<li><a href="'.base_url().'categorias"> <i class="icon-tags"></i>&nbsp;Categorias</a></li>';
+                        echo '</ul>';
+                    echo '</div>';
+                    echo '</li>';
+                    
+                    echo '<li>';
+                    echo 'Ventas<span></span>';
+                    echo '<div>';
+                        echo '<ul>';
+                            echo '<li><a href="'.base_url().'ventas"> <i class="icon-shopping-cart"></i>&nbsp;Nueva Venta</a></li>';
+                        echo '</ul>';
+                    echo '</div>';
+                    echo '</li>'; 
+                    
+                    echo '<li>';
+                    echo 'Reportes<span></span>';
+                    echo '<div>';
+                        echo '<ul>';
+                            echo '<li><a href="'.base_url().'reportes"> <i class="fa fa-file-text-o"></i>&nbsp;Reporte de Movimientos</a></li>';
+                        echo '</ul>';
+                    echo '</div>';
+                    echo '</li>';
+                    
+                echo '</ul><!--/Fin Lista de Menu-->';
+                echo '<br/>';
+            echo '</div>';
+        }
+?>    
     
         </div>
         <div class="col-md-offset-2 main">

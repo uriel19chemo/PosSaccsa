@@ -1,3 +1,4 @@
+<!--Vista productos para generar el listado de todos los productos-->
 <div class="features_items"><!--div contenedor de productos-->
 <h2 class="title text-center">Lista de Productos</h2>
  <?php

@@ -16,29 +16,26 @@ class categorias extends CI_Controller {
 	}
 //Funcion index Muestra carga la vista del modulo categorias
 	public function index(){
-
+          //Utilizacion del helper url
           $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
 
           $this->seguridad_model->SessionActivo($url);//Llamada a la funcion SessionActivo del modelo seguridad  para verificar la sesion
-
-          /**/
 
           $this->load->view('constant');//llamada a la vista constantes
 
           $this->load->view('view_header');//Llamada ala vista header
           //Llamado a la funcion listarCategorias del modelo categorias y los almacena en un array
           $data['categorias'] = $this->categorias_model->ListarCategorias();
-          //Cargar de la vista categorias 
+          //Cargar de la vista categorias mediante arreglo obtenido $data de categorias
           $this->load->view('categorias/view_categorias', $data);
-          
+         
           $this->load->view('view_footer');//Lamada a la vista footer
-
-          
+ 
 
 	}
 //Funcion nuenosubcategoria Para agregar una nueva subcategoria
      public function nuevosubcategoria($id,$descr){
-
+          //Utilizacion del helper url
           $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
           //Llamada a la funcion SessionActivo del modelo seguridad  para verificar la sesion
           $this->seguridad_model->SessionActivo($url);
@@ -64,7 +61,7 @@ class categorias extends CI_Controller {
      }
 //Funcion editar subcategoria
      public function editarsubcategoria($id,$descr,$idsubcategoria){
-
+          //Utilizacion del helper url
           $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
           //Llamada a la funcion SessionActivo del modelo seguridad  para verificar la sesion
           $this->seguridad_model->SessionActivo($url);
@@ -94,13 +91,13 @@ class categorias extends CI_Controller {
      }
 //Funcion savesubcategoria para guardar las subcategorias
      public function SaveSubcategoria(){
-
+          //Utilizacion del helper url
           $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
           //Llamada a la funcion SessionActivo del modelo seguridad  para verificar la sesion
           $this->seguridad_model->SessionActivo($url);
           
           $SubCategoria           = json_decode($this->input->post('SubCategoriasPost'));
-     //aray response para verificacion de campos
+     //aray response para verificacion de campos vacios
           $response = array (
 
                     "estatus"   => false,
@@ -149,7 +146,7 @@ class categorias extends CI_Controller {
                //If para verificacion del guardado exitoso de la informacion
                if($SubCategoria->Id==""){
 
-                    $this->categorias_model->SaveSubCategoria($arrayCategoria);
+                    $this->categorias_model->SaveSubCategoria($arrayCategoria);//Llamado a funcio saveSubcaegoria del modelo categorias
 
                     $response["error_msg"]   = "<div class='alert alert-success text-center' alert-dismissable> <button type='button' class='close' data-dismiss='alert'>&times;</button>Informacion Guardada Correctamente</div>";
 
@@ -158,7 +155,7 @@ class categorias extends CI_Controller {
                }
                //If para verificacion de la actualizacion de informacion correctamente
                if($SubCategoria->Id != ""){
-
+                    //Llamado a funcion updatesubCategoria del modelo categorias
                     $this->categorias_model->UpdateSubCategoria($arrayCategoria,$SubCategoria->Id);
 
                     $response["error_msg"]   = "<div class='alert alert-success text-center' alert-dismissable> <button type='button' class='close' data-dismiss='alert'>&times;</button> Informacion Actualizada Correctamente</div>";
@@ -172,7 +169,7 @@ class categorias extends CI_Controller {
      }
 // Funcion nuevo para una nueva categoria
      public function nuevo(){
-
+          //Utilizacion del helper url
           $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
           //Llamada a la funcion SessionActivo del modelo seguridad  para verificar la sesion
           $this->seguridad_model->SessionActivo($url);
@@ -190,7 +187,7 @@ class categorias extends CI_Controller {
      }
 // Funcion Editar para editar una categoria mediante el id
      public function Editar($id){
-
+          //Utilizacion del helper url
           $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
           //Llamada a la funcion SessionActivo del modelo seguridad  para verificar la sesion
           $this->seguridad_model->SessionActivo($url);
@@ -212,7 +209,7 @@ class categorias extends CI_Controller {
      }
 //Funcion delete para eliminar una categoria
      public function DeleteCategoria(){
-
+          //Utilizacion del helper url
           $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
           //Llamada a la funcion SessionActivo del modelo seguridad  para verificar la sesion
           $this->seguridad_model->SessionActivo($url);
@@ -221,7 +218,7 @@ class categorias extends CI_Controller {
 
           $id                 = base64_decode($Categoria->Id);
 
-          /*Array de response*/
+          /*Array de verificacion de campos vacios*/
 
            $response = array (
 
@@ -242,7 +239,7 @@ class categorias extends CI_Controller {
      }
 //Funcion delete subcategoria para eliminar una subcategoria
      public function DeleteSubcategoria(){
-
+          //Utilizacion del helper url
           $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
           //Llamada a la funcion SessionActivo del modelo seguridad  para verificar la sesion
           $this->seguridad_model->SessionActivo($url);
@@ -270,7 +267,7 @@ class categorias extends CI_Controller {
      }
 //Funcion subcategoria para el listado de subcategorias
      public function Subcategoria($id,$descr){
-
+          //Utilizacion del helper url
           $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
           //Llamada a la funcion SessionActivo del modelo seguridad  para verificar la sesion
           $this->seguridad_model->SessionActivo($url);
@@ -296,7 +293,7 @@ class categorias extends CI_Controller {
      }
 //Funcion savecategoria para guardar una categoria
      public function SaveCategoria(){
-
+          //Utilizacion del helper url
           $url="http://".$_SERVER['HTTP_HOST'].$_SERVER['REQUEST_URI'];
           //Llamada a la funcion SessionActivo del modelo seguridad  para verificar la sesion
           $this->seguridad_model->SessionActivo($url);
@@ -340,7 +337,7 @@ class categorias extends CI_Controller {
                          );
                 //If para verificacion del guardado exitoso de la informacion
                if($Categoria->Id==""){
-
+                    //Llamado a funcion saveCategoria del modelo categorias
                     $this->categorias_model->SaveCategoria($arrayCategoria);
 
                     $response["error_msg"]   = "<div class='alert alert-success text-center' alert-dismissable> <button type='button' class='close' data-dismiss='alert'>&times;</button>Informacion Guardada Correctamente</div>";
@@ -350,7 +347,7 @@ class categorias extends CI_Controller {
                }
                //If para verificacion de la actualizacion de informacion correctamente
                if($Categoria->Id != ""){
-
+                    //Llamado a funcion Update categoria del modelo categorias
                     $this->categorias_model->UpdateCategoria($arrayCategoria,$Categoria->Id);
 
                     $response["error_msg"]   = "<div class='alert alert-success text-center' alert-dismissable> <button type='button' class='close' data-dismiss='alert'>&times;</button> Informacion Actualizada Correctamente</div>";

@@ -51,7 +51,7 @@ $html = "";
 //Estilo Titulo del pdf
 $html = '<h2 style="text-align:center"><font color="#FF0000">Reporte de Usuarios Registrados</font></h2>';
 $html .= '<table border="0">';//Inicia Tabla
-//Estilo fila de encabezados
+//Estilo a fila de encabezados
 $html .='<tr style="background-color:#FF3; color:#000; text-align: center;">
     <th>ID</th>
     <th>Nombre - Apellidos</th>    

@@ -157,14 +157,14 @@
 						</div>
 						<div class="mainmenu pull-left"><!--Div Menu Inicio-->
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<li><a href="<?php echo base_url()?>" class="active">Inicio</a></li>
-								<li class="dropdown"><a href="#">Ecomerce<i class="fa fa-angle-down"></i></a>
-                                    <ul role="menu" class="sub-menu">
-                                        <li><a href="<?php echo base_url()?>ecomerce/Productos">Productos</a></li> 
-										<li><a href="<?php echo base_url()?>ecomerce/Carrito">Mi Carrito</a></li>
-                                    </ul>
+						            <li><a href="<?php echo base_url()?>" class="active">Inicio</a></li>
+							    <li class="dropdown"><a href="#">Ecomerce<i class="fa fa-angle-down"></i></a>
+                                                                <ul role="menu" class="sub-menu">
+                                                                    <li><a href="<?php echo base_url()?>ecomerce/Productos">Productos</a></li> 
+								    <li><a href="<?php echo base_url()?>ecomerce/Carrito">Mi Carrito</a></li>
+                                                                </ul>
 							    <li><a href="<?php echo base_url()?>ecomerce/Contacto">Contacto</a></li>
-                                </li> 
+                                                            </li> 
 							</ul>
 						</div><!--/Fin div menu Inicio-->
 					</div>
@@ -273,7 +273,7 @@
 												# code...
 												if($value->id==$value2->id_categoria){
 													echo '<ul>';
-													echo '<li><a href="#">'.$value2->descripcion.'</a></li>';
+													echo '<li><a href="'.base_url().'ecomerce/ProductosCat/">'.$value2->descripcion.'</a></li>';
 													echo '</ul>';
 												}
 											}
@@ -285,8 +285,7 @@
 							?>
 								
 							</div><!--/Fin div panel-->
-							 
-							
+							 		
 						</div><!--/categoria de productos-->
 					 
 					</div><!--/Fin div sidebar-->

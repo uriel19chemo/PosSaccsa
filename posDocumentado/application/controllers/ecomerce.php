@@ -27,7 +27,7 @@ class ecomerce extends CI_Controller {
           //Llamada a funciones del modelo_ecomerce
           $data['productosnew']= $this->ecomerce_model->ProductosNew();
           $data['imgsproducto']= $this->ecomerce_model->TraeImagenes();
-          $data['TraeCatLimit']= $this->ecomerce_model->TraeCategoriaLimit(); 
+          $data['TraeCatLimit']= $this->ecomerce_model->TraeCategoriaLimit();//Productos por Categoria
           $data['ProductoCat'] = $this->ecomerce_model->Productos();
           $data['CarruselProd']= $this->ecomerce_model->CarruselProductos();
           //Llamada a plantillas del modelo_ecomerce
@@ -39,65 +39,95 @@ class ecomerce extends CI_Controller {
  * Funcion Contacto en cargada de cargar el formulario de contacto
 */
 	public function Contacto($offset=''){
-		  $this->load->view('constant');//Llamada a la vista Constantes
+	    $this->load->view('constant');//Llamada a la vista Constantes
 
-		  //Llamado a funciones del modelo_categorias
-          $data['categorias'] = $this->categorias_model->ListarCategorias();
-          $data['subcategoria'] = $this->categorias_model->ListarSubCategorias();
+            //Llamado a funciones del modelo_categorias
+            $data['categorias'] = $this->categorias_model->ListarCategorias();
+            $data['subcategoria'] = $this->categorias_model->ListarSubCategorias();
            //Llamada a plantillas del modelo_ecomerce
-          $this->load->view('ecomerce/view_header',$data);//Llamada al header
-          $this->load->view('ecomerce/view_contacto');//Llamada a vista ecomerce(Contenido del Llenado y listado del formulario de contacto)
-          $this->load->view('ecomerce/view_footer');//Llamada a footer
+            $this->load->view('ecomerce/view_header',$data);//Llamada al header
+            $this->load->view('ecomerce/view_contacto');//Llamada a vista ecomerce(Contenido del Llenado y listado del formulario de contacto)
+            $this->load->view('ecomerce/view_footer');//Llamada a footer
 	}
 /*
  * Funcion Productos en cargada de cargar el Listado de productos
 */	
 	public function Productos($offset=''){
-		  $this->load->view('constant');//Llamada a la vista Constantes
+	    $this->load->view('constant');//Llamada a la vista Constantes
 
-		  //Llamado a funciones del modelo_categorias
-          $data['categorias'] = $this->categorias_model->ListarCategorias();
-          $data['subcategoria'] = $this->categorias_model->ListarSubCategorias();
+	  //Llamado a funciones del modelo_categorias
+            $data['categorias'] = $this->categorias_model->ListarCategorias();
+            $data['subcategoria'] = $this->categorias_model->ListarSubCategorias();
            //Llamada a plantillas del modelo_ecomerce
-          $this->load->view('ecomerce/view_header',$data);//Llamada al header
-          $this->load->view('ecomerce/view_list_productos');//Llamada a vista ecomerce(Contenido del Llenado y listado de productos)
-          $this->load->view('ecomerce/view_footer');//Llamada a footer
+            $this->load->view('ecomerce/view_header',$data);//Llamada al header
+            $this->load->view('ecomerce/view_list_productos');//Llamada a vista ecomerce(Contenido del Llenado y listado de productos)
+            $this->load->view('ecomerce/view_footer');//Llamada a footer
 	}
 /*
  * Funcion Pagina_Productos en cargada de cargar el Listado de productos mediante paginacion
 */	
 	public function Pagina_Productos($offset=''){
-		   //
-		  $limit                = 9;//Limite de Productos Por Pagina
-	      $data['Productos']    = $this->ecomerce_model->ListProductos($limit, $offset);//Llamado a funcion ListProductos de modelo
-	      $config['base_url']   = base_url().'ecomerce/Pagina_Productos/';//Funcion Para cambiar pagina
-	      $config['total_rows'] = $this->ecomerce_model->CountProductos();//Funcion para contar Productos y Crear Paginas
-	      $config['per_page']   = $limit;//Funcion para organizar por categorias los productos y limitar paginas
-	      $config['uri_segment']= '3';//Funcion que cuenta paginas y sombrea la seleccionada
-	      $this->pagination->initialize($config);//Funcion que inicializa la paginacion
-	      $data['pag_links']    = $this->pagination->create_links(); //Creador de links de paginacion 
-	      $data['imgsproducto'] = $this->ecomerce_model->TraeImagenes();//Llamado a funcion TreaImagenes del modelo
-          $this->load->view('ecomerce/view_productos',$data);//Funcion Para cargar la plantilla del listado de productos
+
+	    $limit                = 9;//Limite de Productos Por Pagina
+	    $data['Productos']    = $this->ecomerce_model->ListProductos($limit, $offset);//Llamado a funcion ListProductos de modelo
+	    $config['base_url']   = base_url().'ecomerce/Pagina_Productos/';//Funcion Para cambiar pagina
+	    $config['total_rows'] = $this->ecomerce_model->CountProductos();//Funcion para contar Productos y Crear Paginas
+	    $config['per_page']   = $limit;//Funcion para organizar por categorias los productos y limitar paginas
+	    $config['uri_segment']= '3';//Funcion que cuenta paginas y sombrea la seleccionada
+	    $this->pagination->initialize($config);//Funcion que inicializa la paginacion
+	    $data['pag_links']    = $this->pagination->create_links(); //Creador de links de paginacion 
+	    $data['imgsproducto'] = $this->ecomerce_model->TraeImagenes();//Llamado a funcion TreaImagenes del modelo
+            $this->load->view('ecomerce/view_productos',$data);//Funcion Para cargar la plantilla del listado de productos
+	}
+/*
+ * Funcion ProductosCat en cargada de cargar el Listado de productos para cada categoria
+*/	
+	public function ProductosCat($offset=''){
+	    $this->load->view('constant');//Llamada a la vista Constantes
+
+	  //Llamado a funciones del modelo_categorias
+            $data['categorias'] = $this->categorias_model->ListarCategorias();
+            $data['subcategoria'] = $this->categorias_model->ListarSubCategorias();
+           //Llamada a plantillas del modelo_ecomerce
+            $this->load->view('ecomerce/view_header',$data);//Llamada al header
+            $this->load->view('ecomerce/view_list_productos_cat');//Llamada a vista ecomerce(Contenido del Llenado y listado de productos)
+            $this->load->view('ecomerce/view_footer');//Llamada a footer
+	}
+/*
+ * Funcion Pagina_ProductosCat en cargada de cargar el Listado de productos mediante paginacion para cada categoria
+*/	
+	public function Pagina_ProductosCat($offset=''){
+
+	    $limit                = 9;//Limite de Productos Por Pagina
+	    $data['Productos']    = $this->ecomerce_model->ListProductos($limit, $offset);//Llamado a funcion ListProductos de modelo
+	    $config['base_url']   = base_url().'ecomerce/Pagina_ProductosCat/';//Funcion Para cambiar pagina
+	    $config['total_rows'] = $this->ecomerce_model->CountProductos();//Funcion para contar Productos y Crear Paginas
+	    $config['per_page']   = $limit;//Funcion para organizar por categorias los productos y limitar paginas
+	    $config['uri_segment']= '3';//Funcion que cuenta paginas y sombrea la seleccionada
+	    $this->pagination->initialize($config);//Funcion que inicializa la paginacion
+	    $data['pag_links']    = $this->pagination->create_links(); //Creador de links de paginacion 
+	    $data['imgsproducto'] = $this->ecomerce_model->TraeImagenes();//Llamado a funcion TreaImagenes del modelo
+            $this->load->view('ecomerce/view_productos_cat',$data);//Funcion Para cargar la plantilla del listado de productos
 	}
 /*
  * Funcion Product_Detail en cargada de cargar el detalle de los productos mediante el id 
 */	
 	public function Product_Detail($id){
-		  $id = base64_decode($id);//Id para consultar el producto
-		  $this->load->view('constant');//Llamado a la vista  constante Para el header
+	    $id = base64_decode($id);//Id para consultar el producto
+	    $this->load->view('constant');//Llamado a la vista  constante Para el header
 
-		  //Llamado a funciones del modelo_categorias
-          $data['categorias'] = $this->categorias_model->ListarCategorias();
-          $data['subcategoria'] = $this->categorias_model->ListarSubCategorias();
+	//Llamado a funciones del modelo_categorias
+            $data['categorias'] = $this->categorias_model->ListarCategorias();
+            $data['subcategoria'] = $this->categorias_model->ListarSubCategorias();
           //Llamada a funciones del modelo_ecomerce
-          $data['DetalleProd'] = $this->ecomerce_model->BuscaProducto($id);
-           $data['imgsproducto']= $this->ecomerce_model->TraeImagenDetalle($id);
-           $data['CarruselProd']= $this->ecomerce_model->CarruselProductos();
-           $data['imgsproducto2']= $this->ecomerce_model->TraeImagenes();
+            $data['DetalleProd'] = $this->ecomerce_model->BuscaProducto($id);
+            $data['imgsproducto']= $this->ecomerce_model->TraeImagenDetalle($id);
+            $data['CarruselProd']= $this->ecomerce_model->CarruselProductos();
+            $data['imgsproducto2']= $this->ecomerce_model->TraeImagenes();
           //Llamada a plantillas del modelo_ecomerce
-          $this->load->view('ecomerce/view_header',$data);//Llamada al header
-          $this->load->view('ecomerce/view_detail',$data);//Llamada a vista ecomerce(Contenido del Llenado y listado de  detalles de los productos)
-          $this->load->view('ecomerce/view_footer');//Llamada a footer
+            $this->load->view('ecomerce/view_header',$data);//Llamada al header
+            $this->load->view('ecomerce/view_detail',$data);//Llamada a vista ecomerce(Contenido del Llenado y listado de  detalles de los productos)
+            $this->load->view('ecomerce/view_footer');//Llamada a footer
 	}
 /*
  * Funcion DeleteCarrito en cargada de Vaciar el Carrito Por Completo  
@@ -160,15 +190,15 @@ class ecomerce extends CI_Controller {
  * Funcion Carrito en cargada de mostrar la vista Carrito   
 */
 	public function Carrito(){
-		$this->load->view('constant');//Llamado a la vista  constante Para el header
+            $this->load->view('constant');//Llamado a la vista  constante Para el header
 
-		//Llamado a funciones del modelo_categorias
-        $data['categorias'] = $this->categorias_model->ListarCategorias();
-        $data['subcategoria'] = $this->categorias_model->ListarSubCategorias();
+	//Llamado a funciones del modelo_categorias
+            $data['categorias'] = $this->categorias_model->ListarCategorias();
+            $data['subcategoria'] = $this->categorias_model->ListarSubCategorias();
         //Llamada a plantillas del modelo_ecomerce
-		$this->load->view('ecomerce/view_header',$data);//Llamada al header
-        $this->load->view('ecomerce/view_carrito');//Llamada a vista ecomerce(Contenido del Llenado y listado de  detalles de los productos en el carrito)
-        $this->load->view('ecomerce/view_footer');//Llamada al Footer
+	    $this->load->view('ecomerce/view_header',$data);//Llamada al header
+            $this->load->view('ecomerce/view_carrito');//Llamada a vista ecomerce(Contenido del Llenado y listado de  detalles de los productos en el carrito)
+            $this->load->view('ecomerce/view_footer');//Llamada al Footer
 	}
 /*
  * Funcion RealizaPedido en cargada de mostrar la vista Para realizar el pedido 
@@ -383,5 +413,6 @@ class ecomerce extends CI_Controller {
 		}
 		echo json_encode($response);
 	}
+        
 
 }

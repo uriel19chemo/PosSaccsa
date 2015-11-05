@@ -56,7 +56,7 @@ function EliminarUsuario(Usuario, id){
 						$idusuario     = base64_encode($usuario->ID);
 						echo '<tr>';
 						echo '<td>';
-                                                echo '<a href="usuarios/Editar/'.$idusuario.'"><button type="button" title="Editar Usuario" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-edit"></span></button></a> &nbsp;';
+                                                echo '<a href="usuarios/Editar/'.$idusuario.'"><button type="button" title="Editar Usuario" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a> &nbsp;';
 						//echo '<a href=""><button type="button" title="Editar Usuario" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-edit"></span></button></a> &nbsp;';
 						?>
                                                 <button type="button" onclick="EliminarUsuario('<?php echo $usuario->NOMBRE; ?>','<?php echo $idusuario; ?>');" title="Eliminar Usuario" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-trash"></span></button>
@@ -91,7 +91,7 @@ function EliminarUsuario(Usuario, id){
         <br>
         <?php	
         echo '<button type="submit" >';	
-	    echo anchor('excel', 'Reporte Excel Usuarios', ' target="_blank" class=""'); 
+	    echo anchor('excel/exportarUsuariosE', 'Reporte Excel Usuarios', ' target="_blank" class=""'); 
         echo '</button>';
         ?>
         <!--/FIN Reportes PDF Y EXCEL-->

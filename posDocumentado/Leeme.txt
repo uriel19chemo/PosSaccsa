@@ -1,5 +1,10 @@
 
 Pasos para instalar.
+- configurar el archi httpd.conf ubicdo en C:\wamp\bin\apache\apache2.4.9\conf
+Descomentar la linea 154 -> LoadModule rewrite_module modules/mod_rewrite.so
+para lectura del proyecto en apache
+
+
 - abrimos el archivo de config.php ubicado en C:\xampp\htdocs\pos\application\config en la linea 19 colocar el url
 correcto. ejemplo http://localhost/pos/
 
@@ -12,12 +17,12 @@ Asi uno se logea como administrador o vendedor para cargar o subir imagenes de p
 Para que el sistema pueda enviar el mail configurar lo siguiente.
 crear una cuenta de gmail.
 una vez creado logearse a esa cuenta. 
- entran en gmail inician sesión y después abren la siguiente liga: 
+ entran en gmail inician sesiï¿½n y despuï¿½s abren la siguiente liga: 
 https://www.google.com/settings/security/lesssecureapps
-y le activan la opción de Habilitar o Activar, por default esta deshabilitado, esa opción permite el envió de correos.
+y le activan la opciï¿½n de Habilitar o Activar, por default esta deshabilitado, esa opciï¿½n permite el enviï¿½ de correos.
 
 una vez realizado eso abrir el archivo de ecomerce.php ubicado en  C:\xampp\htdocs\pos\application\controllers
-en la linea 176 colocar el correo y contraseña creado. 
+en la linea 176 colocar el correo y contraseï¿½a creado. 
 $configGmail = array(
 					'protocol'  => 'smtp',
 					'smtp_host' => 'ssl://smtp.gmail.com',

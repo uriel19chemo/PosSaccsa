@@ -88,7 +88,7 @@
     <script src="<?php echo base_url()?>lib/js/jquery.js"></script>
     <script src="<?php echo base_url()?>lib/js/bootstrap.min.js"></script>
     <script src="<?php echo base_url()?>lib/js/jquery.scrollUp.min.js"></script>	
-    <script src="<?php echo base_url()?>../lib/js/main.js"/></script>
+    <script src="<?php echo base_url()?>lib/js/main.js"/></script>
     <!--Script Para funcion de icono flotante para subir en la web-->                            
     <script>
     $(document).ready(function(){

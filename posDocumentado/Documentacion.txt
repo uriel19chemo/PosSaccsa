@@ -1,6 +1,6 @@
 Admin
 uri19chemo@gmail.com
-contraseña: 1234
+contraseï¿½a: 1234
 Vendedor
 u10_ronal-azul_10@hotmail.com
 Cliente
@@ -8,7 +8,6 @@ crisant_89@hotmail.com
 1234
 
 Siempre Llamar ala funcion del modelo en el controlador en la funcion Index que se utilizara
-
 
 
 0.- Archivo htaccess
@@ -36,6 +35,15 @@ ___>> Crear Controladores para cada modulo o catalogo del SYS
 ___>> Crear Modelos para cada modulo o catalogo del SYS
 8.-Carpeta Application--->_views
 ___>> Crear Vistas para cada modulo o catalogo del SYS
-9.- Para los PDF se crea un Controlador pdf, un modelo model_pdf_excel y una vista por cada catalogo pdf_usuarios etc...
-10.- Para los EXCEL se crea un helper llamado mysql_to_excel_helper en la carpeta helpers dentro de application tambien 
+9.-Carpeta posDocumentado---_js
+___>>Crear archivo JS para funcion de guardado de cada Catalogo
+10.-Reporte PDF
+___>>Para los PDF se crea un Controlador pdf, un modelo model_pdf_excel y una vista por cada catalogo pdf_usuarios etc...
+11.-Reporte Excel
+___>>Para los EXCEL se crea un helper llamado mysql_to_excel_helper en la carpeta helpers dentro de application tambien 
 crear controlador llamado excel y el modelo modelo_pdf_excel
+12.-Respaldo de Seguridad de BD
+___>> Para crear el backup se crea una funcion backupBD() en el controlador backup.php y es llamado atraves del enlace en la vista header.php
+      tambien se cambio el archivo config->database.php en la linea 55 de mysqli a mysql para soporte del helper del framework
+13.-FORMA DE LINK CON ECHO DE PHP
+___>> echo '<li><a href="'.base_url().'ecomerce/ProductosCat/">'.$value2->descripcion.'</a></li>';

@@ -1,5 +1,10 @@
 <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/panel-style.css">
 <link rel="stylesheet" href="<?php echo base_url()?>css/iconos/font-awesome/css/font-awesome.css">
+<script language="javascript" type="text/javascript" src="<?php echo base_url();?>js/dist/jquery.jqplot.min.js"></script>
+<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>js/dist/jquery.jqplot.min.css" />
+
+<script type="text/javascript" src="<?php echo base_url();?>js/dist/plugins/jqplot.pieRenderer.min.js"></script>
+<script type="text/javascript" src="<?php echo base_url();?>js/dist/plugins/jqplot.donutRenderer.min.js"></script>
 <h1 class="page-header"><i class="icon-dashboard"></i> Bienvenido al Sistema de Administración</h1>
 
 <br/>
@@ -13,6 +18,7 @@
             <li class="bg_ly"> <a href="<?php echo base_url()?>proveedores"> <i class="icon-suitcase"></i> Proveedores</a> </li>
             <li class="bg_lo"> <a href="<?php echo base_url()?>categorias"> <i class="icon-tags"></i> Categorias</a> </li>
             <li class="bg_ls"> <a href="<?php echo base_url()?>ventas"><i class="icon-shopping-cart"></i> Ventas</a></li>
+           
       </ul>
     </div>
   </div>  
@@ -20,6 +26,7 @@
 
 <!--Reportes PDF-->
 <?php	
+/*
     echo '<button type="submit" >';	
 	echo anchor('pdf/exportarUsuarios', 'Reporte PDF usuarios', ' target="_blank" class=""'); 
     echo '</button>';
@@ -27,8 +34,10 @@
 <br>
 <?php	
     echo '<button type="submit" >';	
-	echo anchor('excel', 'Reporte Excel Usuarios', ' target="_blank" class=""'); 
+	echo anchor('excel/exportarUsuariosE', 'Reporte Excel Usuarios', ' target="_blank" class=""'); 
     echo '</button>';
+ 
+ */
 ?>
 <!--/FIN Reportes PDF-->
 
@@ -36,7 +45,132 @@
 <img src="<?php echo base_url()?>img/logophpU.jpg" />
 <br/>
 <a>TSU: Uriel López Vargas</a>
-<br/><br/><br/>
+<br/><br/><br/><!--Saltos de linea-->
+
+<!--Division de stock minimo de productos-->
+
+<div class="span12">
+        
+        <div class="widget-box">
+            <div class="widget-title"><span class="icon"><i class="icon-signal"></i></span><h5>Productos Con Stock Mínimo</h5></div>
+            <div class="widget-content">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Producto</th>
+                            <th>Precio de Venta</th>
+                            <th>Cantidad</th>
+                            <th>Stock Mínimo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        
+                        if($productos != null){
+                            
+                            foreach ($productos as $producto) {
+                                
+                                echo '<tr>';
+                                echo '<td>'.$producto->id.'</td>';
+                                echo '<td>'.$producto->descripcion.'</td>';
+                                echo '<td>$ '.$producto->precio_venta.'</td>';
+                                echo '<td>'.$producto->cantidad.'</td>';
+                                echo '<td>'.$producto->stock.'</td>';
+                                echo '<td>';
+                                    //echo '<a href="'.base_url().'productos/editarProducto/'.$producto->id.'" class="btn btn-success"> <i class="icon-pencil" ></i> </a>  ';
+                                    echo '<a href="'.base_url().'ordencompra" class="btn btn-success"> <i class="fa fa-cart-plus"></i></a>';
+                                echo '</td>';
+                                echo '</tr>';
+                            }
+                        }
+                        else{
+                            echo '<tr><td colspan="3">No hay productos con Stock Mínimo.</td></tr>';
+                        }    
+
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+<!--/Fin division de stock minimo de productos-->
+
+<br><br><!--Saltos de linea-->
+
+<!--Division de pedidos -->
+<div class="span12" style="margin-left: 0">
+        
+        <div class="widget-box">
+            <div class="widget-title"><span class="icon"><i class="icon-signal"></i></span><h5>Pedidos de Productos Pendientes</h5></div>
+            <div class="widget-content">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Fecha Inicial</th>
+                            <th>Fecha Final</th>
+                            <th>Cliente</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php 
+                        if($documentos != null){
+                            foreach ($documentos as $o) {
+                                echo '<tr>';
+                                echo '<td>'.$o->ID.'</td>';
+                                echo '<td>'.date('d/m/Y' ,strtotime($o->FECHA)).'</td>';
+                                echo '<td>'.date('d/m/Y' ,strtotime($o->FECHA)).'</td>';
+                                echo '<td>'.$o->CLIENTE.'</td>';
+                                echo '<td>';
+                                
+                                    //echo '<a href="'.base_url().'index.php/os/visualizar/'.$o->ID.'" class="btn"> <i class="icon-eye-open" ></i> </a> '; 
+                                    echo '<a href="'.base_url().'login/" class="btn"> <i class="icon-eye-open" ></i> </a> '; 
+                                    
+                                echo '</td>';
+                                echo '</tr>';
+                            }
+                        }
+                        else{
+                            echo '<tr><td colspan="3">Ningun Servicio de pedido pendiente.</td></tr>';
+                        }    
+
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+<!--/Fin division de pedidos-->
+
+<br><br><!--Saltos de linea-->
+
+<!--Division de Estadisticas de servicio-->
+<?php if($documentos2 != null){ ?>
+<div class="row-fluid" style="margin-top: 0">
+
+    <div class="span12">
+        
+        <div class="widget-box">
+            <div class="widget-title"><span class="icon"><i class="icon-signal"></i></span><h5>Estatísticas de Pedidos</h5></div>
+            <div class="widget-content">
+                <div class="row-fluid">
+                    <div class="span12">
+                      <div id="chart-os" style=""></div>
+                    </div>
+            
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<?php } ?>
+<!--Fin de division de estadisticas de servicio-->
+
+<br><br><!--Saltos de linea-->
 
 <!--Estadisticas del Sistemas-->
 <div class="row-fluid" style="margin-top: 0">
@@ -63,8 +197,39 @@
 <!--/Fin estadisticas del sistema-->
 <br/><br/><br/>
 
+<script src="<?php echo base_url();?>css/bootstrap.min.js"></script>
 
+<!--SCRIPT Para funcion de estadisticas de pedidos-->
+<?php if($documentos2 != null) {?>
+<script type="text/javascript">
+    
+    $(document).ready(function(){
+      var data = [
+        <?php foreach ($documentos2 as $o) {
+            echo "['".$o->ESTATUS."', ".$o->total."],";
+        } ?>
+       
+      ];
+      var plot1 = jQuery.jqplot ('chart-os', [data], 
+        { 
+          seriesDefaults: {
+            // Make this a pie chart.
+            renderer: jQuery.jqplot.PieRenderer, 
+            rendererOptions: {
+              // Put data labels on the pie slices.
+              // By default, labels show the percentage of the slice.
+              showDataLabels: true
+            }
+          }, 
+          legend: { show:true, location: 'e' }
+        }
+      );
 
+    });
+ 
+</script>
+
+<?php } ?>
 
 
 
