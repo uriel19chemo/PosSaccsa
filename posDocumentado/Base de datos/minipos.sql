@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 09-10-2015 a las 20:28:00
+-- Tiempo de generación: 23-11-2015 a las 02:47:12
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -205,24 +205,24 @@ INSERT INTO `accesosusuarios` (`Id`, `Usuario`, `Proteccion`, `Estatus`) VALUES
 CREATE TABLE IF NOT EXISTS `categorias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `descripcion` varchar(50) NOT NULL,
-  `estatus` int(11) NOT NULL DEFAULT '1',
+  `id_departamento` int(11) NOT NULL,
+  `estatus` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `categorias`
 --
 
-INSERT INTO `categorias` (`id`, `descripcion`, `estatus`) VALUES
-(1, 'Escritura', 1),
-(2, 'Oficina', 1),
-(3, 'Llaveros', 1),
-(4, 'Bebidas', 1),
-(5, 'Muebles', 1),
-(6, 'Celulares y Smartphones', 1),
-(7, 'TV y Audio', 1),
-(8, 'Ropa', 1),
-(11, 'HALO', 1);
+INSERT INTO `categorias` (`id`, `descripcion`, `id_departamento`, `estatus`) VALUES
+(1, 'Escritura', 1, 1),
+(2, 'Oficina', 2, 1),
+(3, 'Llaveros', 2, 1),
+(4, 'Bebidas', 1, 1),
+(5, 'Muebles', 2, 1),
+(6, 'Celulares y Smartphones', 1, 1),
+(7, 'TV y Audio', 2, 1),
+(8, 'Ropa', 2, 1);
 
 -- --------------------------------------------------------
 
@@ -245,7 +245,9 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('895946860972f0b3a83e9471eea58e72', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36', 1444412099, 'a:7:{s:2:"ID";s:1:"1";s:6:"NOMBRE";s:5:"Uriel";s:9:"APELLIDOS";s:13:"López Vargas";s:5:"EMAIL";s:20:"uri19chemo@gmail.com";s:11:"TIPOUSUARIO";s:1:"1";s:13:"TIPOUSUARIOMS";s:13:"Administrador";s:12:"is_logged_in";b:1;}');
+('03785e480c45e66d841e650f58c8e3e3', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36', 1448238269, 'a:8:{s:9:"user_data";s:0:"";s:2:"ID";s:1:"1";s:6:"NOMBRE";s:5:"Uriel";s:9:"APELLIDOS";s:13:"López Vargas";s:5:"EMAIL";s:20:"uri19chemo@gmail.com";s:11:"TIPOUSUARIO";s:1:"1";s:13:"TIPOUSUARIOMS";s:13:"Administrador";s:12:"is_logged_in";b:1;}'),
+('15736a3ad49ca5654616941cf7c5f2fb', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36', 1448066172, 'a:8:{s:9:"user_data";s:0:"";s:2:"ID";s:1:"1";s:6:"NOMBRE";s:5:"Uriel";s:9:"APELLIDOS";s:13:"López Vargas";s:5:"EMAIL";s:20:"uri19chemo@gmail.com";s:11:"TIPOUSUARIO";s:1:"1";s:13:"TIPOUSUARIOMS";s:13:"Administrador";s:12:"is_logged_in";b:1;}'),
+('7f42bfd8cd5aa3dc0b67cbb5411947f1', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36', 1448061371, 'a:8:{s:9:"user_data";s:0:"";s:2:"ID";s:1:"1";s:6:"NOMBRE";s:5:"Uriel";s:9:"APELLIDOS";s:13:"López Vargas";s:5:"EMAIL";s:20:"uri19chemo@gmail.com";s:11:"TIPOUSUARIO";s:1:"1";s:13:"TIPOUSUARIOMS";s:13:"Administrador";s:12:"is_logged_in";b:1;}');
 
 -- --------------------------------------------------------
 
@@ -274,7 +276,7 @@ CREATE TABLE IF NOT EXISTS `clientes` (
   `FECHA_EDICION` varchar(20) NOT NULL,
   `PASSWORD` varchar(100) NOT NULL,
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20 ;
 
 --
 -- Volcado de datos para la tabla `clientes`
@@ -282,7 +284,9 @@ CREATE TABLE IF NOT EXISTS `clientes` (
 
 INSERT INTO `clientes` (`ID`, `CODIGO_CLIENTE`, `NOMBRE`, `APELLIDOS`, `CP`, `CALLE`, `COLONIA`, `LOCALIDAD`, `MUNICIPIO`, `ESTADO`, `PAIS`, `EMAIL`, `RFC`, `TELEFONO`, `ID_DIR_ENVIO`, `ECOMERCE`, `FECHA_REGISTRO`, `FECHA_EDICION`, `PASSWORD`) VALUES
 (7, '00001', 'Cristhian', 'Castañeda Rivera', 37600, 'dscs', 'Oriental', 'san', 'San Felipe', 'Guanajuato', 'Mexico', 'wwwcasta@live.com.mx', 'XAXX010101000', '32423423423', 0, 0, '2015-07-30 13:00:13', '2015-10-6 17:31:36', '$1$WJ3.nP4.$6qWDBDkaaA0dwCjJsnDsM/'),
-(17, '00002', 'Manuel', 'Cortes Crisanto', 73080, 'Salinas 203', 'Xicotepec de Juárez Centro', 'Xicotepec', 'Xicotepec', 'Puebla', 'Mexico', 'crisant_89@hotmail.com', 'COCM891121RH3', '5512453755', 0, 0, '2015-08-19 21:59:58', '2015-10-6 17:22:35', '$1$WJ3.nP4.$6qWDBDkaaA0dwCjJsnDsM/');
+(17, '00002', 'Manuel', 'Cortes Crisanto', 73080, 'Salinas 203', 'Xicotepec de Juárez Centro', 'Xicotepec', 'Xicotepec', 'Puebla', 'Mexico', 'crisant_89@hotmail.com', 'COCM891121RH3', '5512453755', 0, 0, '2015-08-19 21:59:58', '2015-10-6 17:22:35', '$1$WJ3.nP4.$6qWDBDkaaA0dwCjJsnDsM/'),
+(18, '00003', 'Uriel', 'López', 1000, 'San Angel', 'San Angel', 'Ciudad de México', 'Álvaro Obregón', 'Distrito Federal', 'Mexico', 'u10_ronal-azul_10@hotmail.com', 'LOVU19998890F', '57429561', 0, 0, '2015-10-14 16:08:16', '', '$1$yG/.TY4.$7Q0MutYz3pfSZSWk55fit0'),
+(19, '00004', 'Amri', 'Blue', 56340, 'canarios', 'Cerro de Las Palomas', 'Chimalhuac', 'Chimalhuacán', 'México', 'Mexico', 'amriblue27@hotmail.com', 'PERI870325', '5566778822', 0, 0, '2015-10-20 14:48:10', '', '$1$6O3.VU5.$DL7CvHKAeB3IGsDDQFLMu0');
 
 -- --------------------------------------------------------
 
@@ -32415,6 +32419,28 @@ INSERT INTO `codigospostales` (`CodigoPostal`, `Colonia`, `ciudad`, `Municipio`,
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `departamento`
+--
+
+CREATE TABLE IF NOT EXISTS `departamento` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(100) NOT NULL,
+  `id_sucursal` int(11) NOT NULL,
+  `estatus` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Volcado de datos para la tabla `departamento`
+--
+
+INSERT INTO `departamento` (`id`, `descripcion`, `id_sucursal`, `estatus`) VALUES
+(1, 'hola', 1, 1),
+(2, 'FFFFF', 2, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `direcciones_envio`
 --
 
@@ -32436,14 +32462,15 @@ CREATE TABLE IF NOT EXISTS `direcciones_envio` (
   `FECHA_REGISTRO` varchar(20) NOT NULL,
   PRIMARY KEY (`ID`),
   FULLTEXT KEY `REFERENCIAS` (`REFERENCIAS`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
 
 --
 -- Volcado de datos para la tabla `direcciones_envio`
 --
 
 INSERT INTO `direcciones_envio` (`ID`, `ID_CLIENTE`, `DIRECCION`, `N_EXTERIOR`, `N_INTERIOR`, `CP`, `COLONIA`, `CIUDAD`, `MUNICIPIO`, `ESTADO`, `PAIS`, `TELEFONO`, `REFERENCIAS`, `DIR_DEFAULT`, `FECHA_REGISTRO`) VALUES
-(1, '00001', 'salinas', '203', '', '73080', 'Xicotepec de Juárez Centro', 'Xicotepec', 'Xicotepec', 'Puebla', 'Mexico', '5512453755', 'casa color amarillo', 0, '2015-05-31 14:09:57');
+(1, '00001', 'salinas', '203', '', '73080', 'Xicotepec de Juárez Centro', 'Xicotepec', 'Xicotepec', 'Puebla', 'Mexico', '5512453755', 'casa color amarillo', 0, '2015-05-31 14:09:57'),
+(2, '00004', 'Canarios', '344', '55', '73080', 'Azaleas', 'Xicotepec', 'Xicotepec', 'Puebla', 'Mexico', '44332233', 'Amri', 0, '2015-11-13 15:06:25');
 
 -- --------------------------------------------------------
 
@@ -32471,32 +32498,48 @@ CREATE TABLE IF NOT EXISTS `documentos` (
   `T_CREDITO` varchar(10) NOT NULL DEFAULT '0',
   `T_DEBITO` varchar(10) NOT NULL DEFAULT '0',
   `CHEQUE` varchar(10) NOT NULL DEFAULT '0',
-  `USUARIO_NULO` int(11) NOT NULL DEFAULT '0',
+  `ESTATUS` int(1) NOT NULL DEFAULT '2',
   `DESCRIPCION_NULO` varchar(300) NOT NULL DEFAULT 'NINGUNA',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=155 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=171 ;
 
 --
 -- Volcado de datos para la tabla `documentos`
 --
 
-INSERT INTO `documentos` (`ID`, `TIPO`, `FECHA`, `ALMACEN`, `CLIENTE`, `PROVEEDOR`, `FACTURA`, `BASEIMPUESTO`, `TOTAL_IMPUESTO`, `BRUTO`, `TOTAL`, `USUARIO`, `NULO`, `DESCUENTO`, `DESCUENTOPORCENTAJE`, `EFECTIVO`, `T_CREDITO`, `T_DEBITO`, `CHEQUE`, `USUARIO_NULO`, `DESCRIPCION_NULO`) VALUES
+INSERT INTO `documentos` (`ID`, `TIPO`, `FECHA`, `ALMACEN`, `CLIENTE`, `PROVEEDOR`, `FACTURA`, `BASEIMPUESTO`, `TOTAL_IMPUESTO`, `BRUTO`, `TOTAL`, `USUARIO`, `NULO`, `DESCUENTO`, `DESCUENTOPORCENTAJE`, `EFECTIVO`, `T_CREDITO`, `T_DEBITO`, `CHEQUE`, `ESTATUS`, `DESCRIPCION_NULO`) VALUES
 (144, 'Entrada', '2015-08-17 11:05:27', '100', 0, 0, 0, 16.00, 10289264.00, 64307900.00, 74597164.00, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
 (143, 'Entrada', '2015-08-17 10:50:39', '100', 0, 0, 0, 16.00, 1630400.00, 10190000.00, 11820400.00, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
 (139, 'Entrada', '2015-08-17 10:19:35', '100', 0, 0, 0, 16.00, 1323812.61, 8273828.80, 9597641.41, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
 (140, 'Entrada', '2015-08-17 10:26:51', '100', 0, 0, 0, 16.00, 89255.36, 557846.00, 647101.36, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
 (141, 'Entrada', '2015-08-17 10:29:27', '100', 0, 0, 0, 16.00, 720.48, 4503.00, 5223.48, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
 (142, 'Entrada', '2015-08-17 10:30:51', '100', 0, 0, 0, 16.00, 1155.20, 7220.00, 8375.20, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
-(145, 'Pedido', '2015-08-20 23:08:15', '100', 17, 0, 0, 16.00, 2034.88, 12718.00, 14752.88, 17, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
-(146, 'Pedido', '2015-08-21 00:24:52', '100', 17, 0, 0, 16.00, 804.34, 5027.12, 5831.46, 17, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
-(147, 'Pedido', '2015-09-15 19:17:14', '100', 17, 0, 0, 16.00, 1150.88, 7193.00, 8343.88, 17, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
-(148, 'Pedido', '2015-09-21 16:40:27', '100', 17, 0, 0, 16.00, 2301.76, 14386.00, 16687.76, 17, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
-(149, 'Pedido', '2015-09-21 16:50:47', '100', 17, 0, 0, 16.00, 2382.72, 14892.00, 17274.72, 17, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
-(150, 'Pedido', '2015-09-21 16:51:43', '100', 17, 0, 0, 16.00, 1150.88, 7193.00, 8343.88, 17, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
-(151, 'Pedido', '2015-09-23 09:45:55', '100', 17, 0, 0, 16.00, 1150.88, 7193.00, 8343.88, 17, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
+(145, 'Pedido', '2015-08-20 23:08:15', '100', 17, 0, 0, 16.00, 2034.88, 12718.00, 14752.88, 17, 0, '0', '0', '0', '0', '0', '0', 1, 'NINGUNA'),
+(146, 'Pedido', '2015-08-21 00:24:52', '100', 17, 0, 0, 16.00, 804.34, 5027.12, 5831.46, 17, 0, '0', '0', '0', '0', '0', '0', 1, 'NINGUNA'),
+(147, 'Pedido', '2015-09-15 19:17:14', '100', 17, 0, 0, 16.00, 1150.88, 7193.00, 8343.88, 17, 0, '0', '0', '0', '0', '0', '0', 1, 'NINGUNA'),
+(148, 'Pedido', '2015-09-21 16:40:27', '100', 17, 0, 0, 16.00, 2301.76, 14386.00, 16687.76, 17, 0, '0', '0', '0', '0', '0', '0', 2, 'NINGUNA'),
+(149, 'Pedido', '2015-09-21 16:50:47', '100', 17, 0, 0, 16.00, 2382.72, 14892.00, 17274.72, 17, 0, '0', '0', '0', '0', '0', '0', 1, 'NINGUNA'),
+(150, 'Pedido', '2015-09-21 16:51:43', '100', 17, 0, 0, 16.00, 1150.88, 7193.00, 8343.88, 17, 0, '0', '0', '0', '0', '0', '0', 1, 'NINGUNA'),
+(151, 'Pedido', '2015-09-23 09:45:55', '100', 17, 0, 0, 16.00, 1150.88, 7193.00, 8343.88, 17, 0, '0', '0', '0', '0', '0', '0', 2, 'NINGUNA'),
 (152, 'Venta', '2015-09-23 15:13:39', '100', 1, 0, 0, 16.00, 2.91, 18.20, 21.11, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
-(153, 'Pedido', '2015-10-5 12:15:03', '100', 17, 0, 0, 16.00, 479.84, 2999.00, 3478.84, 17, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
-(154, 'Venta', '2015-10-7 16:25:02', '100', 2, 0, 0, 16.00, 52.51, 328.20, 380.71, 17, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA');
+(153, 'Pedido', '2015-10-5 12:15:03', '100', 17, 0, 0, 16.00, 479.84, 2999.00, 3478.84, 17, 0, '0', '0', '0', '0', '0', '0', 1, 'NINGUNA'),
+(154, 'Venta', '2015-10-7 16:25:02', '100', 2, 0, 0, 16.00, 52.51, 328.20, 380.71, 17, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
+(155, 'Venta', '2015-10-9 18:52:03', '100', 1, 0, 0, 16.00, 62.30, 389.38, 451.68, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
+(156, 'Pedido', '2015-10-14 15:51:18', '100', 7, 0, 0, 16.00, 479.84, 2999.00, 3478.84, 7, 0, '0', '0', '0', '0', '0', '0', 1, 'NINGUNA'),
+(157, 'Pedido', '2015-10-14 15:55:21', '100', 7, 0, 0, 16.00, 10.09, 63.05, 73.14, 7, 0, '0', '0', '0', '0', '0', '0', 1, 'NINGUNA'),
+(158, 'Pedido', '2015-10-14 16:09:39', '100', 18, 0, 0, 16.00, 1150.88, 7193.00, 8343.88, 18, 0, '0', '0', '0', '0', '0', '0', 2, 'NINGUNA'),
+(159, 'Entrada', '2015-10-20 12:49:51', '100', 0, 0, 0, 16.00, 2.88, 18.00, 20.88, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
+(160, 'Pedido', '2015-10-20 14:50:19', '100', 19, 0, 0, 16.00, 803.04, 5019.00, 5822.04, 19, 0, '0', '0', '0', '0', '0', '0', 1, 'NINGUNA'),
+(161, 'Entrada', '2015-10-29 09:16:06', '100', 0, 0, 0, 16.00, 2.88, 18.00, 20.88, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
+(162, 'Venta', '2015-10-29 09:22:26', '100', 4, 0, 0, 16.00, 10.44, 65.28, 75.72, 2, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
+(163, 'Venta', '2015-10-29 09:30:23', '100', 3, 0, 0, 16.00, 52.51, 328.20, 380.71, 2, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
+(164, 'Venta', '2015-10-29 09:30:44', '100', 1, 0, 0, 16.00, 2.02, 12.61, 14.63, 2, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
+(165, 'Venta', '2015-10-29 09:31:56', '100', 3, 0, 0, 16.00, 55.53, 347.08, 402.61, 2, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
+(166, 'Pedido', '2015-10-29 13:30:54', '100', 18, 0, 0, 16.00, 479.84, 2999.00, 3478.84, 18, 0, '0', '0', '0', '0', '0', '0', 1, 'NINGUNA'),
+(167, 'Venta', '2015-11-14 12:46:06', '100', 1, 0, 0, 16.00, 0.36, 2.23, 2.59, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
+(168, 'Venta', '2015-11-14 12:46:49', '100', 3, 0, 0, 16.00, 0.36, 2.23, 2.59, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
+(169, 'Venta', '2015-11-14 12:52:15', '100', 1, 0, 0, 16.00, 52.51, 328.20, 380.71, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA'),
+(170, 'Venta', '2015-11-14 13:01:36', '100', 1, 0, 0, 16.00, 52.51, 328.20, 380.71, 1, 0, '0', '0', '0', '0', '0', '0', 0, 'NINGUNA');
 
 -- --------------------------------------------------------
 
@@ -32621,7 +32664,7 @@ CREATE TABLE IF NOT EXISTS `partidas` (
   `SALIDAS` double(12,2) NOT NULL DEFAULT '0.00',
   `ENTRADAS` double(12,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`ID`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=230 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=249 ;
 
 --
 -- Volcado de datos para la tabla `partidas`
@@ -32664,7 +32707,26 @@ INSERT INTO `partidas` (`ID`, `ID_LINK`, `TIPO`, `FECHA`, `CLIENTE`, `PROVEEDOR`
 (226, 151, 'Pedido', '2015-09-23 09:45:55', 17, 0, '', 0.00, 7193.00, '', 1.00, 0.00),
 (227, 152, 'Venta', '2015-09-23 15:13:39', 1, 2, 'ES31001PLAZ', 1.20, 1.82, 'BOL DE PAPEL RECICLADO CLICK AZU', 10.00, 0.00),
 (228, 153, 'Pedido', '2015-10-5 12:15:03', 17, 0, '', 0.00, 2999.00, '', 1.00, 0.00),
-(229, 154, 'Venta', '2015-10-7 16:25:02', 2, 2, 'OF61007CLNG', 300.00, 328.20, 'CONVERSION TECH PADFOLIO CASE LOGIC NG', 1.00, 0.00);
+(229, 154, 'Venta', '2015-10-7 16:25:02', 2, 2, 'OF61007CLNG', 300.00, 328.20, 'CONVERSION TECH PADFOLIO CASE LOGIC NG', 1.00, 0.00),
+(230, 155, 'Venta', '2015-10-9 18:52:03', 1, 2, 'OF61007CLNG', 300.00, 328.20, 'CONVERSION TECH PADFOLIO CASE LOGIC NG', 1.00, 0.00),
+(231, 155, 'Venta', '2015-10-9 18:52:03', 1, 2, 'ES21002CLNG', 50.80, 61.18, 'DUAL BALLPOINT STYLUS CASE LOGIC NG', 1.00, 0.00),
+(232, 156, 'Pedido', '2015-10-14 15:51:18', 7, 0, '', 0.00, 2999.00, '', 1.00, 0.00),
+(233, 157, 'Pedido', '2015-10-14 15:55:21', 7, 0, '', 0.00, 12.61, '', 5.00, 0.00),
+(234, 158, 'Pedido', '2015-10-14 16:09:39', 18, 0, '', 0.00, 7193.00, '', 1.00, 0.00),
+(235, 159, 'Entrada', '2015-10-20 12:49:51', 0, 0, 'ES11017MXAZ', 2.00, 1.80, 'BOL MAXEMA PIXEL FROST CLIP-TRASNL AZU-T', 0.00, 10.00),
+(236, 160, 'Pedido', '2015-10-20 14:50:19', 19, 0, 'OF61007CLNG', 300.00, 5019.00, 'CONVERSION TECH PADFOLIO CASE LOGIC NG', 1.00, 0.00),
+(237, 161, 'Entrada', '2015-10-29 09:16:07', 0, 0, 'ES11017MXAZ', 2.00, 1.80, 'BOL MAXEMA PIXEL FROST CLIP-TRASNL AZU-T', 0.00, 10.00),
+(238, 162, 'Venta', '2015-10-29 09:22:26', 4, 2, 'OF11005PLPL', 11.00, 12.61, 'CALCULADORA ACRILICO MOBILE PLA', 5.00, 0.00),
+(239, 162, 'Venta', '2015-10-29 09:22:26', 4, 2, 'ES11017MXAZ', 1.80, 2.23, 'BOL MAXEMA PIXEL FROST CLIP-TRASNL AZU-T', 1.00, 0.00),
+(240, 163, 'Venta', '2015-10-29 09:30:23', 3, 2, 'OF61007CLNG', 300.00, 328.20, 'CONVERSION TECH PADFOLIO CASE LOGIC NG', 1.00, 0.00),
+(241, 164, 'Venta', '2015-10-29 09:30:44', 1, 2, 'OF11005PLPL', 11.00, 12.61, 'CALCULADORA ACRILICO MOBILE PLA', 1.00, 0.00),
+(242, 165, 'Venta', '2015-10-29 09:31:56', 3, 2, 'OF11005PLPL', 11.00, 12.61, 'CALCULADORA ACRILICO MOBILE PLA', 1.00, 0.00),
+(243, 165, 'Venta', '2015-10-29 09:31:56', 3, 2, 'OF61023ZMGR', 300.00, 334.47, 'WEB TECH PAD ZOOM GR', 1.00, 0.00),
+(244, 166, 'Pedido', '2015-10-29 13:30:54', 18, 0, '', 0.00, 2999.00, '', 1.00, 0.00),
+(245, 167, 'Venta', '2015-11-14 12:46:06', 1, 2, 'ES11017MXAZ', 1.80, 2.23, 'BOL MAXEMA PIXEL FROST CLIP-TRASNL AZU-T', 1.00, 0.00),
+(246, 168, 'Venta', '2015-11-14 12:46:49', 3, 2, 'ES11017MXAZ', 1.80, 2.23, 'BOL MAXEMA PIXEL FROST CLIP-TRASNL AZU-T', 1.00, 0.00),
+(247, 169, 'Venta', '2015-11-14 12:52:15', 1, 2, 'OF61007CLNG', 300.00, 328.20, 'CONVERSION TECH PADFOLIO CASE LOGIC NG', 1.00, 0.00),
+(248, 170, 'Venta', '2015-11-14 13:01:36', 1, 2, 'OF61007CLNG', 300.00, 328.20, 'CONVERSION TECH PADFOLIO CASE LOGIC NG', 1.00, 0.00);
 
 -- --------------------------------------------------------
 
@@ -32697,13 +32759,13 @@ CREATE TABLE IF NOT EXISTS `productos` (
 --
 
 INSERT INTO `productos` (`id`, `codigo`, `descripcion`, `precio_compra`, `precio_venta`, `cantidad`, `id_categoria`, `id_subcategoria`, `inventariable`, `stock`, `id_proveedor`, `unidadmedida`, `fecha`, `FechaEdicion`) VALUES
-(1, 'OF61007CLNG', 'CONVERSION TECH PADFOLIO CASE LOGIC NG', 300.00, 328.20, 11244, 2, 14, '1', 1, 2, 'Unidad/Pza', '2015-08-17 09:53:53', '2015-08-17 10:00:09'),
-(2, 'OF11005PLPL', 'CALCULADORA ACRILICO MOBILE PLA', 11.00, 12.61, 1675, 2, 11, '1', 1, 2, 'Unidad/Pza', '2015-08-17 09:55:59', ''),
+(1, 'OF61007CLNG', 'CONVERSION TECH PADFOLIO CASE LOGIC NG', 300.00, 328.20, 11240, 2, 14, '1', 1, 2, 'Unidad/Pza', '2015-08-17 09:53:53', '2015-08-17 10:00:09'),
+(2, 'OF11005PLPL', 'CALCULADORA ACRILICO MOBILE PLA', 11.00, 12.61, 1668, 2, 11, '1', 1, 2, 'Unidad/Pza', '2015-08-17 09:55:59', ''),
 (3, 'OF31001FDCF', 'CAMBRIDGE REFILLABLE NOTEBOOK F & CO CF', 150.00, 175.81, 1431, 2, 12, '1', 1, 2, 'Unidad/Pza', '2015-08-17 09:56:55', ''),
 (4, 'OF51001PLAZ', 'PORTA GAFETE YOYO PLASTICO AZU-T', 3.00, 3.30, 1531, 2, 13, '1', 1, 2, 'Unidad/Pza', '2015-08-17 09:58:22', ''),
-(5, 'OF61023ZMGR', 'WEB TECH PAD ZOOM GR', 300.00, 334.47, 15134, 2, 14, '1', 1, 2, 'Unidad/Pza', '2015-08-17 09:59:10', ''),
-(6, 'ES11017MXAZ', 'BOL MAXEMA PIXEL FROST CLIP-TRASNL AZU-T', 1.80, 2.23, 10, 1, 5, '1', 10, 2, 'Unidad/Pza', '2015-08-17 10:09:42', ''),
-(7, 'ES21002CLNG', 'DUAL BALLPOINT STYLUS CASE LOGIC NG', 50.80, 61.18, 1451, 1, 6, '1', 1, 2, 'Unidad/Pza', '2015-08-17 10:10:46', ''),
+(5, 'OF61023ZMGR', 'WEB TECH PAD ZOOM GR', 300.00, 334.47, 15133, 2, 14, '1', 1, 2, 'Unidad/Pza', '2015-08-17 09:59:10', ''),
+(6, 'ES11017MXAZ', 'BOL MAXEMA PIXEL FROST CLIP-TRASNL AZU-T', 1.80, 2.23, 17, 1, 5, '1', 10, 2, 'Unidad/Pza', '2015-08-17 10:09:42', ''),
+(7, 'ES21002CLNG', 'DUAL BALLPOINT STYLUS CASE LOGIC NG', 50.80, 61.18, 1450, 1, 6, '1', 1, 2, 'Unidad/Pza', '2015-08-17 10:10:46', ''),
 (8, 'ES31001PLAZ', 'BOL DE PAPEL RECICLADO CLICK AZU', 1.20, 1.82, 1302, 1, 5, '1', 1, 2, 'Unidad/Pza', '2015-08-17 10:11:41', ''),
 (9, 'ES55013PLTR', 'SET 3 MARCADORES SOLIDOS LUCENT TRA', 11.60, 12.32, 1751, 1, 7, '1', 1, 2, 'Unidad/Pza', '2015-08-17 10:12:36', ''),
 (10, 'ES85001PLTR', 'LIBRO P/COLOREAR+10 ACUARELAS(ZIP)ART TR', 5.20, 6.36, 5000, 1, 8, '1', 1, 2, 'Unidad/Pza', '2015-08-17 10:13:20', ''),
@@ -32738,7 +32800,7 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
   `fecha_registro` varchar(20) NOT NULL,
   `fecha_edicion` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Volcado de datos para la tabla `proveedores`
@@ -32790,6 +32852,36 @@ INSERT INTO `subcategoria` (`id`, `id_categoria`, `descripcion`, `estatus`) VALU
 (21, 7, 'Teatro en Casa', 1),
 (22, 7, 'Proyectores', 1),
 (23, 11, 'minihalo', 1);
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sucursal`
+--
+
+CREATE TABLE IF NOT EXISTS `sucursal` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `descripcion` varchar(50) NOT NULL,
+  `calleNumero` varchar(40) NOT NULL,
+  `colonia` varchar(30) NOT NULL,
+  `estado` varchar(100) NOT NULL,
+  `ciudad` varchar(100) NOT NULL,
+  `municipio` varchar(30) NOT NULL,
+  `cp` varchar(5) NOT NULL,
+  `telefono` varchar(20) NOT NULL,
+  `estatus` int(1) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+
+--
+-- Volcado de datos para la tabla `sucursal`
+--
+
+INSERT INTO `sucursal` (`id`, `descripcion`, `calleNumero`, `colonia`, `estado`, `ciudad`, `municipio`, `cp`, `telefono`, `estatus`) VALUES
+(1, 'POS Aragon', 'zonaleros', 'Zona Este', 'Baja California', 'Tijuana', 'Tijuana', '22000', '55443322', 1),
+(2, 'Pos artes TWO II', 'gggghh', 'Marin', 'Nuevo León', 'nuevo leon', 'Marín', '66700', '4455667788', 1),
+(3, 'Pos Catemaco', 'calle', 'Verde Valle', 'Jalisco', 'Guadalajara', 'Guadalajara', '44550', '5566778888', 1),
+(4, 'pos neza', 'los candes res', 'Esperanza', 'México', 'Ciudad Nezahualcoyotl', 'Nezahualcóyotl', '57800', '5566556655', 1);
 
 -- --------------------------------------------------------
 
