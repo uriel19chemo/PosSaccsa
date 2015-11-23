@@ -19,7 +19,8 @@
     <link href="<?php echo base_url()?>css/dashboard.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/menu.css">
     <link rel="stylesheet" type="text/css" href="<?php echo base_url()?>css/Tablas.css">
-    <link rel="stylesheet" href="<?php echo base_url()?>css/iconos/css/font-awesome.min.css">
+    <link rel="stylesheet" href="<?php echo base_url()?>css/iconos/css/font-awesome.min.css"><!--Iconos Grandes-->
+    <link rel="stylesheet" href="<?php echo base_url()?>css/iconos/font-awesome/css/font-awesome.css"><!--Iconos Pequeños Menu-->
     <link rel="stylesheet" href="<?php echo base_url()?>css/jquery-ui.css"> 
   </head>
 
@@ -63,10 +64,12 @@
                 echo 'Catalogos<span></span>';
                 echo '<div>';
                     echo '<ul>';
-                        echo '<li><a href="'.base_url().'productos"> <i class="icon-barcode"></i>&nbsp;Productos</a></li>';
                         echo '<li><a href="'.base_url().'clientes"> <i class="icon-group"></i>&nbsp;Clientes</a></li>';
-                        echo '<li><a href="'.base_url().'proveedores"> <i class="icon-suitcase"></i>&nbsp;Proveedores</a></li>';
+                        echo '<li><a href="'.base_url().'sucursal"> <i class="icon-building"></i>&nbsp;Sucursales</a></li>';
+                        echo '<li><a href="'.base_url().'departamento"> <i class="icon-columns"></i>&nbsp;Departamentos</a></li>';
                         echo '<li><a href="'.base_url().'categorias"> <i class="icon-tags"></i>&nbsp;Categorias</a></li>';
+                        echo '<li><a href="'.base_url().'proveedores"> <i class="icon-suitcase"></i>&nbsp;Proveedores</a></li>';
+                        echo '<li><a href="'.base_url().'productos"> <i class="icon-barcode"></i>&nbsp;Productos</a></li>';
                         echo '<li><a href="'.base_url().'usuarios"> <i class="icon-user"></i>&nbsp;Usuarios</a></li>';
                     echo '</ul>';
                 echo '</div>';

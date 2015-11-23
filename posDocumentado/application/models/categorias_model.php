@@ -96,6 +96,20 @@ class categorias_model extends CI_Model {
 		return $query->result();
 
 	}
+        
+/*
+  * Funcion Departamentos Para consultar las departamentos registradas en la base de datos
+ */
+	public function Departamentos(){
+
+		$sql="select * from departamento";
+
+		$query=$this->db->query($sql);
+
+		return $query->result();
+
+	}
+        
 /*
   * Funcion Save Categoria Para almacenar la categoria  en la base de datos
  */

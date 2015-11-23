@@ -12,7 +12,6 @@ class categorias extends CI_Controller {
 
 		$this->load->model('categorias_model');//Llamada al modelo de categorias
                 
-
 	}
 //Funcion index Muestra carga la vista del modulo categorias
 	public function index(){
@@ -291,6 +290,16 @@ class categorias extends CI_Controller {
           $this->load->view('view_footer');//Llamado a la vista footer
 
      }
+     
+     //Funcion Departamentos para listar departamentos
+	public function departamentos(){
+                //Llamado a funcion depatamentos del modelo categorias
+		$departamentos = $this->categorias_model->Departamentos();
+
+		echo json_encode($departamentos);
+
+	}
+     
 //Funcion savecategoria para guardar una categoria
      public function SaveCategoria(){
           //Utilizacion del helper url
@@ -300,15 +309,15 @@ class categorias extends CI_Controller {
            
           $Categoria           = json_decode($this->input->post('CategoriasPost'));
          //Array de response para verificacion de campos
-          $response = array (
+        $response = array (
 
-                    "estatus"   => false,
+                "estatus"   => false,
 
-                    "campo"     => "",
+                "campo"     => "",
 
-                 "error_msg" => ""
+                "error_msg" => ""
 
-         );
+        );
           //Verificacion del campo Descipcion
            if($Categoria->Descripcion==""){
 
@@ -318,21 +327,31 @@ class categorias extends CI_Controller {
 
                echo json_encode($response);
 
-          }else if($Categoria->Estatus=="0"){//Verificacion del campo Estatus
+          }else if($Categoria->Departamento=="0"){//If para verificacion del campo Departamento
+
+		    $response["campo"]       = "departamento";
+
+		    $response["error_msg"]   = "<div class='alert alert-danger text-center' alert-dismissable><button type='button' class='close' data-dismiss='alert'>&times;</button>Elige un Departamento</div>";
+
+		    echo json_encode($response);
+
+		}else if($Categoria->Estatus=="0"){//Verificacion del campo Estatus
                
-               $response["campo"]     = "estatus";
+                    $response["campo"]     = "estatus";
 
-               $response["error_msg"]   = "<div class='alert alert-danger text-center' alert-dismissable><button type='button' class='close' data-dismiss='alert'>&times;</button>El Estatus es obligatorio</div>";
+                    $response["error_msg"]   = "<div class='alert alert-danger text-center' alert-dismissable><button type='button' class='close' data-dismiss='alert'>&times;</button>El Estatus es obligatorio</div>";
 
-               echo json_encode($response);
+                     echo json_encode($response);
 
           }else{
                //ArrayCategoria con datos recuperados de los campos
                     $arrayCategoria    = array(
 
-                         "descripcion" => $Categoria->Descripcion,
+                        "descripcion" => $Categoria->Descripcion,
+                        
+                        'id_departamento' => $Categoria->Departamento,
 
-                         "estatus"     => $Categoria->Estatus
+                        "estatus"     => $Categoria->Estatus
 
                          );
                 //If para verificacion del guardado exitoso de la informacion

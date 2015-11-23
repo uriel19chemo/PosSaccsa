@@ -120,6 +120,7 @@
                         <?php 
                         if($documentos != null){
                             foreach ($documentos as $o) {
+                                $id     = base64_encode($o->ID);
                                 echo '<tr>';
                                 echo '<td>'.$o->ID.'</td>';
                                 echo '<td>'.date('d/m/Y' ,strtotime($o->FECHA)).'</td>';
@@ -128,7 +129,8 @@
                                 echo '<td>';
                                 
                                     //echo '<a href="'.base_url().'index.php/os/visualizar/'.$o->ID.'" class="btn"> <i class="icon-eye-open" ></i> </a> '; 
-                                    echo '<a href="'.base_url().'login/" class="btn"> <i class="icon-eye-open" ></i> </a> '; 
+                                    //echo '<a href="'.base_url().'login/" class="btn"> <i class="icon-eye-open" ></i> </a> '; 
+                                    echo '<a href="pedidos/editarPedido/'.$id.'"><button type="button" title="Editar Pedido" class="btn btn-success btn-xs"><span class="glyphicon glyphicon-pencil"></span></button></a> &nbsp;';
                                     
                                 echo '</td>';
                                 echo '</tr>';
@@ -159,7 +161,8 @@
             <div class="widget-content">
                 <div class="row-fluid">
                     <div class="span12">
-                      <div id="chart-os" style=""></div>
+                        <div id="chart-os" style="">
+                        </div>
                     </div>
             
                 </div>
@@ -197,8 +200,6 @@
 <!--/Fin estadisticas del sistema-->
 <br/><br/><br/>
 
-<script src="<?php echo base_url();?>css/bootstrap.min.js"></script>
-
 <!--SCRIPT Para funcion de estadisticas de pedidos-->
 <?php if($documentos2 != null) {?>
 <script type="text/javascript">
@@ -206,7 +207,14 @@
     $(document).ready(function(){
       var data = [
         <?php foreach ($documentos2 as $o) {
-            echo "['".$o->ESTATUS."', ".$o->total."],";
+            /*if($o->ESTATUS==1 || $o->ESTATUS==2){
+                echo "['".$o->ESTATUS."', ".$o->total."],";
+            }*/
+            //Traemos solo los documentos del tipo pedido Entregados y Pendientes
+            if($o->ESTATUS==1 || $o->ESTATUS==2){
+                echo "['".$o->ESTATUS."', ".$o->total."],";
+            } 
+            //echo "['".$o->ESTATUS."', ".$o->total."],";
         } ?>
        
       ];

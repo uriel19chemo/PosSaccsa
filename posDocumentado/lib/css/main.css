@@ -899,7 +899,7 @@ h2.title {
   transition: height 500ms ease 0s;
   width: 100%;
   display: block;
-  opacity:;
+  opacity:0;
 }
 
 .single-products:hover .product-overlay {
@@ -1141,8 +1141,11 @@ h2.title {
 ul{border:0; margin:0; padding:0;}
 
 #pagination-digg li{
-   border:0; margin:0; padding:0;
-IMAGEN    font-size:11px;
+   border:0; 
+   margin:0; 
+   padding:0;
+//IMAGEN    font-size:11px;
+   font-size:11px;
    list-style:none;
    margin-right:2px;
 }
@@ -1545,7 +1548,7 @@ IMAGEN    font-size:11px;
 }
 
 
-.or{
+.ors{
 	background: #FE980F;
 	border-radius: 40px;
 	color: #FFFFFF;

@@ -45,7 +45,7 @@ var baseurl = "<?php echo base_url(); ?>";
 				</div>
 
 				<div class="col-sm-1">
-					<h2 class="or">OR</h2>
+					<h2 class="ors">OR</h2>
 				</div>
 
 				<div class="col-sm-4">

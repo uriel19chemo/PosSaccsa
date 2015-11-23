@@ -39,16 +39,40 @@ function EliminarUsuario(Usuario, id){
  	 </a>  
  	 </p>
  	 <br/>
-	<table id="usuarios" border="0" cellpadding="0" cellspacing="0" width="100%" class="pretty">
-		<thead>
-			<tr>
-				<th></th>
-				<th>Nombre</th>
-				<th>Email</th>
-				<th>Tipo Usuario</th>
-				<th>Fecha Registro</th> 
-			</tr>
-		</thead>
+	<table id="usuarios" border="0" cellpadding="0" cellspacing="0" width="100%" class="pretty" >
+		<thead> <!--Cabezera de tabla-->
+                    <!--/ Reportes PDF y EXCEL-->
+                    <tr>
+                        <th>
+                            <?php	
+                                echo '<button type="button" title="Reporte en PDF" class="btn btn-default btn-xs" > ';
+	                        echo anchor('pdf/exportarUsuarios', '<span class="fa fa-file-pdf-o"></span>', ' target="_blank" class=""'); 
+                                echo '</button>';
+                            ?>
+                                
+                            <?php	
+                                echo '<button type="button" title="Reporte en Excel" class="btn btn-default btn-xs" >';	
+	                        echo anchor('excel/exportarUsuariosE', '<span class="fa fa-file-excel-o"></span>', ' target="_blank" class=""'); 
+                                echo '</button>';
+                            ?>
+                        </th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <!--/FIN Reportes PDF Y EXCEL--> 
+                    
+                    <!--Nombre de columnas-->   
+		    <tr>
+		        <th></th>
+		        <th>Nombre</th>
+			<th>Email</th>
+			<th>Tipo Usuario</th>
+			<th>Fecha Registro</th>
+	            </tr>
+                    <!--/Fin Nombre de columnas-->
+		</thead><!--Termina cabezera de tabla-->
 		<tbody>
 			<?php
 				if($usuarios){
@@ -81,20 +105,7 @@ function EliminarUsuario(Usuario, id){
 			?>
 		</tbody>
 	</table>
-         <!--/ Reportes PDF y EXCEL-->
-         <br/>
-        <?php	
-            echo '<button type="submit" >';	
-	       echo anchor('pdf/exportarUsuarios', 'Reporte PDF Usuarios', ' target="_blank" class=""'); 
-            echo '</button>';
-        ?>
-        <br>
-        <?php	
-        echo '<button type="submit" >';	
-	    echo anchor('excel/exportarUsuariosE', 'Reporte Excel Usuarios', ' target="_blank" class=""'); 
-        echo '</button>';
-        ?>
-        <!--/FIN Reportes PDF Y EXCEL-->
+         
          
 <script type="text/javascript">
 
