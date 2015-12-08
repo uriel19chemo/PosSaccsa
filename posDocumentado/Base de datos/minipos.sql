@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2015 a las 02:47:12
+-- Tiempo de generación: 08-12-2015 a las 05:34:31
 -- Versión del servidor: 5.6.17
 -- Versión de PHP: 5.5.12
 
@@ -208,7 +208,7 @@ CREATE TABLE IF NOT EXISTS `categorias` (
   `id_departamento` int(11) NOT NULL,
   `estatus` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=14 ;
 
 --
 -- Volcado de datos para la tabla `categorias`
@@ -245,9 +245,8 @@ CREATE TABLE IF NOT EXISTS `ci_sessions` (
 --
 
 INSERT INTO `ci_sessions` (`session_id`, `ip_address`, `user_agent`, `last_activity`, `user_data`) VALUES
-('03785e480c45e66d841e650f58c8e3e3', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36', 1448238269, 'a:8:{s:9:"user_data";s:0:"";s:2:"ID";s:1:"1";s:6:"NOMBRE";s:5:"Uriel";s:9:"APELLIDOS";s:13:"López Vargas";s:5:"EMAIL";s:20:"uri19chemo@gmail.com";s:11:"TIPOUSUARIO";s:1:"1";s:13:"TIPOUSUARIOMS";s:13:"Administrador";s:12:"is_logged_in";b:1;}'),
-('15736a3ad49ca5654616941cf7c5f2fb', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36', 1448066172, 'a:8:{s:9:"user_data";s:0:"";s:2:"ID";s:1:"1";s:6:"NOMBRE";s:5:"Uriel";s:9:"APELLIDOS";s:13:"López Vargas";s:5:"EMAIL";s:20:"uri19chemo@gmail.com";s:11:"TIPOUSUARIO";s:1:"1";s:13:"TIPOUSUARIOMS";s:13:"Administrador";s:12:"is_logged_in";b:1;}'),
-('7f42bfd8cd5aa3dc0b67cbb5411947f1', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/46.0.2490.86 Safari/537.36', 1448061371, 'a:8:{s:9:"user_data";s:0:"";s:2:"ID";s:1:"1";s:6:"NOMBRE";s:5:"Uriel";s:9:"APELLIDOS";s:13:"López Vargas";s:5:"EMAIL";s:20:"uri19chemo@gmail.com";s:11:"TIPOUSUARIO";s:1:"1";s:13:"TIPOUSUARIOMS";s:13:"Administrador";s:12:"is_logged_in";b:1;}');
+('93047c0e7d7fda6d9cca0f62d98af1cc', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36', 1449548100, ''),
+('d0b07b17949a91b4fa57807fce0b838a', '::1', 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36', 1449543272, 'a:7:{s:2:"ID";s:1:"1";s:6:"NOMBRE";s:5:"Uriel";s:9:"APELLIDOS";s:13:"López Vargas";s:5:"EMAIL";s:20:"uri19chemo@gmail.com";s:11:"TIPOUSUARIO";s:1:"1";s:13:"TIPOUSUARIOMS";s:13:"Administrador";s:12:"is_logged_in";b:1;}');
 
 -- --------------------------------------------------------
 
@@ -32795,20 +32794,26 @@ CREATE TABLE IF NOT EXISTS `proveedores` (
   `nombre_proveedor` varchar(50) NOT NULL,
   `direccion` varchar(100) NOT NULL,
   `telefono` varchar(15) NOT NULL,
+  `colonia` varchar(50) NOT NULL,
+  `estado` varchar(50) NOT NULL,
+  `ciudad` varchar(50) NOT NULL,
+  `municipio` varchar(50) NOT NULL,
   `cp` varchar(5) NOT NULL,
   `estatus` int(11) NOT NULL DEFAULT '1',
   `fecha_registro` varchar(20) NOT NULL,
   `fecha_edicion` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Volcado de datos para la tabla `proveedores`
 --
 
-INSERT INTO `proveedores` (`id`, `nombre_proveedor`, `direccion`, `telefono`, `cp`, `estatus`, `fecha_registro`, `fecha_edicion`) VALUES
-(1, 'Lala', 'Av. Nacional', '5512453755', '12345', 1, '2015-06-11 16:21:58', ''),
-(2, 'Exotic Liquids', 'Salinas 203, Puebla DF', '7647654266', '73080', 1, '2015-10-5 16:23:08', '');
+INSERT INTO `proveedores` (`id`, `nombre_proveedor`, `direccion`, `telefono`, `colonia`, `estado`, `ciudad`, `municipio`, `cp`, `estatus`, `fecha_registro`, `fecha_edicion`) VALUES
+(1, 'Lala', 'Av. Nacional', '5512453755', 'Ecatepec Centro', 'México', 'Ecatepec de Morelos', 'Ecatepec de Morelos', '55000', 1, '2015-12-7 21:08:39', ''),
+(2, 'Exotic Liquids', 'Salinas 203, Puebla DF', '7647654266', '', '', '', '', '73080', 1, '2015-10-5 16:23:08', ''),
+(4, 'AJAX', 'san jose', '5544332233', '', '', '', '', '55665', 1, '2015-12-6 17:15:10', ''),
+(5, 'KARL', 'Benito ', '5566778812', '0', 'México', 'Ciudad Nezahualcoyotl', 'Nezahualcóyotl', '57500', 1, '2015-12-7 21:03:49', '');
 
 -- --------------------------------------------------------
 
